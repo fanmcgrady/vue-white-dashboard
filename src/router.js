@@ -7,7 +7,11 @@ import Notifications from "@/pages/Notifications.vue";
 import UserProfile from "@/pages/UserProfile.vue";
 import TableList from "@/pages/TableList.vue";
 import Typography from "@/pages/Typography.vue";
-import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
+// import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
+import Markvgan from "@/pages/Markvgan.vue";
+import CovertChannel from "@/pages/CovertChannel.vue";
+import FewshotTraffic from "@/pages/FewshotTraffic.vue";
+import MaliciousTraffic from "@/pages/MaliciousTraffic.vue";
 
 
 const routes = [{
@@ -49,9 +53,28 @@ const routes = [{
       path: "typography",
       name: "Typography",
       component: Typography
+    },
+    {
+      path: "markvgan",
+      name: "Markvgan",
+      component: Markvgan
+    },
+    {
+      path: "covertchannel",
+      name: "CovertChannel",
+      component: CovertChannel
+    },
+    {
+      path: "fewshottraffic",
+      name: "FewshotTraffic",
+      component: FewshotTraffic
+    },
+    {
+      path: "malicioustraffic",
+      name: "MaliciousTraffic",
+      component: MaliciousTraffic
     }
-  ]
-
+    ]
 }];
 
 export default routes;
