@@ -21,7 +21,7 @@ const routes = [{
   children:[
     {
       path: "dashboard",
-      name: "Dashboard",
+      name: "系统首页",
       component: Dashboard
     },
     {

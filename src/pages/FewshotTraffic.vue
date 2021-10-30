@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return {
-      resultInfo: "待上传文件"
+      resultInfo: "待上传文件（检测结果共返回5种网络流量类型）"
     }
   },
   methods: {

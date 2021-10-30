@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return {
-      resultInfo: "待上传文件（返回的predict为0到9，需要LTT确认）"
+      resultInfo: "待上传文件（检测结果返回0-9，分别代表（Tinba，Geodo，Cridex，Htbot，Miuref，Neris，Neris-ay，Virut，Shifu，Zeus）种类型的攻击）"
     }
   },
   methods: {

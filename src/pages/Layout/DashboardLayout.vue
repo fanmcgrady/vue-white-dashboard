@@ -7,7 +7,7 @@
       <sidebar-link to="/dashboard">
         <i class="tim-icons icon-chart-pie-36"></i>
         <template v-if="!isRTL">
-          <p>Dashboard</p>
+          <p>系统首页</p>
         </template>
         <template v-else>
           <p>لوحة القيادة</p>
@@ -15,24 +15,24 @@
       </sidebar-link>
       <sidebar-link to="/markvgan">
         <i class="tim-icons icon-atom"></i>
-          <p>Markvgan</p>
+          <p>加密流量检测</p>
       </sidebar-link>
       <sidebar-link to="/covertchannel">
         <i class="tim-icons icon-light-3"></i>
-        <p>CovertChannel</p>
+        <p>隐蔽信道检测</p>
       </sidebar-link>
       <sidebar-link to="/fewshottraffic">
         <i class="tim-icons icon-components"></i>
-        <p>FewshotTraffic</p>
+        <p>异常行为检测</p>
       </sidebar-link>
       <sidebar-link to="/malicioustraffic">
         <i class="tim-icons icon-sound-wave"></i>
-        <p>MaliciousTraffic</p>
+        <p>异常行为检测</p>
       </sidebar-link>
       <sidebar-link to="/icons">
         <i class="tim-icons icon-atom"></i>
         <template v-if="!isRTL">
-          <p>Icons</p>
+          <p>系统管理</p>
         </template>
         <template v-else>
           <p>الرموز</p>

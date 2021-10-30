@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return {
-      resultInfo: "待上传文件（返回的predict为0到9，需要LTT确认）"
+      resultInfo: "待上传文件（返回的predict为0到9，需要鲁婷婷确认）"
     }
   },
   methods: {

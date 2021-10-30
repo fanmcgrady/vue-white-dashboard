@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return {
-      resultInfo: "待上传文件（返回的列表，需要LTT确认）"
+      resultInfo: "待上传文件（暂时返回的列表，最后需要转换成日历图，每个格子代表一个检测结果）"
     }
   },
   methods: {
