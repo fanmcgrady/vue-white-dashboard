@@ -23,11 +23,11 @@
       </sidebar-link>
       <sidebar-link to="/fewshottraffic">
         <i class="tim-icons icon-components"></i>
-        <p>异常行为检测</p>
+        <p>小样本异常行为检测</p>
       </sidebar-link>
       <sidebar-link to="/malicioustraffic">
         <i class="tim-icons icon-sound-wave"></i>
-        <p>异常行为检测</p>
+        <p>强化学习异常行为检测</p>
       </sidebar-link>
       <sidebar-link to="/icons">
         <i class="tim-icons icon-atom"></i>
