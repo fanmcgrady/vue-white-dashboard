@@ -12,7 +12,7 @@
             <span class="navbar-toggler-bar bar3"></span>
           </button>
         </div>
-        <a class="navbar-brand font-weight-bold" href="javascript:void(0)"> {{ $route.name }}</a>
+        <a style="margin-left:-8px;" class="navbar-brand font-weight-bold" href="javascript:void(0)">攻击威胁智能监测与预警系统</a>
       </div>
       <button class="navbar-toggler" type="button"
               @click="toggleMenu"

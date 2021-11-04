@@ -12,7 +12,7 @@ import Markvgan from "@/pages/Markvgan.vue";
 import CovertChannel from "@/pages/CovertChannel.vue";
 import FewshotTraffic from "@/pages/FewshotTraffic.vue";
 import MaliciousTraffic from "@/pages/MaliciousTraffic.vue";
-
+import EscapeAttack from "@/pages/EscapeAttack.vue"
 
 const routes = [{
   path: "/",
@@ -73,6 +73,11 @@ const routes = [{
       path: "malicioustraffic",
       name: "MaliciousTraffic",
       component: MaliciousTraffic
+    },
+    {
+      path: "escapeattack",
+      name: "EscapeAttack",
+      component: EscapeAttack
     }
     ]
 }];

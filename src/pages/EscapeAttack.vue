@@ -4,8 +4,8 @@
       <div class="col-md-12">
         <card>
           <template slot="header">
-            <h5 class="card-category">稀疏异常行为检测</h5>
-            <h3 class="card-title">稀疏异常行为检测</h3>
+            <h5 class="card-category">逃逸攻击检测</h5>
+            <h3 class="card-title">逃逸攻击检测</h3>
           </template>
           <!-- <div class="typography-line text-left">
             <span>上传文件</span>
@@ -37,7 +37,7 @@
               </span>
             </div> -->
 
-            <div class="engines">
+            <!-- <div class="engines">
               <div class="circle">
                 <div class="positives" clean="">0</div>
                 <div class="total">/ 56</div>
@@ -50,19 +50,19 @@
                 style="stroke-dashoffset: 0; stroke-dasharray: 282.743"
               >
                 <circle
-                  cx="200"
-                  cy="200"
+                  cx="50"
+                  cy="50"
                   r="45"
                   stroke-width="10"
                   fill="transparent"
                   stroke="var(--vt-green-500)"
                 ></circle>
               </svg>
-            </div>
+            </div> -->
 
             <div class="alert">
               <i class="tim-icons icon-bell-55"></i>
-              <span> "系统安全，未检测到异常流量" </span>
+              <span> "未检测到异常或威胁信息" </span>
             </div>
 
             <div style="text-align: left; margin-bottom: 10px">
@@ -84,13 +84,21 @@
             <template>
               <base-table :data="tableData2">
                 <template slot-scope="{ row }">
-                  <td>{{ row.key }}</td>
-                  <td>{{ row.value }}</td>
+                  <template v-if="row.key == '样本评级'">
+                    <td>{{ row.key }}</td>
+                    <td>
+                      <div class="label">{{ row.value }}</div>
+                    </td>
+                  </template>
+                  <template v-else>
+                    <td>{{ row.key }}</td>
+                    <td>{{ row.value }}</td>
+                  </template>
                 </template>
               </base-table>
             </template>
 
-            <div style="text-align: left; margin-bottom: 10px">
+            <!-- <div style="text-align: left; margin-bottom: 10px">
               <i
                 style="font-size: 1.73em"
                 class="tim-icons icon-chart-bar-32 big"
@@ -105,37 +113,7 @@
               >
                 检测结果
               </span>
-            </div>
-
-            <template>
-              <base-table :data="tableData" :columns="columns">
-                <template slot="columns">
-                  <th class="text-center">源IP</th>
-                  <th>目的IP</th>
-                  <th>源端口</th>
-                  <th>目标端口</th>
-                  <th>传输层协议</th>
-                  <th>评级</th>
-                  <th>威胁类型</th>
-                </template>
-                <template slot-scope="{ row }">
-                  <td>{{ row.SrcPacketIP }}</td>
-                  <td>{{ row.DstPacketIP }}</td>
-                  <td>{{ row.SrcPacketPort }}</td>
-                  <td>{{ row.DstPacketPort }}</td>
-                  <td>{{ row.Protocol }}</td>
-                  <td>
-                    <template v-if="row.Classfication == 'Normal'">
-                      <div class="label">正常</div>
-                    </template>
-                    <template v-else>
-                      <div class="label error">异常</div>
-                    </template>
-                  </td>
-                  <td>{{ row.DetailLabel }}</td>
-                </template>
-              </base-table>
-            </template>
+            </div> -->
           </div>
         </card>
       </div>
@@ -238,9 +216,8 @@ export default {
             "865e994201266b48ef0750c945c6ea471f80d15d04759bd8b8f71562de0221ef",
         },
         { key: "", value: "" },
-        { key: "检测流数量", value: "900" },
-        { key: "检测流平均包数量", value: "12" },
-        { key: "检测流平均包字节", value: "123 bytes" },
+        { key: "样本评级", value: "正常" },
+        { key: "样本类型", value: "类型A、类型B" },
       ],
     };
   },
@@ -343,6 +320,9 @@ circle {
   padding: 5px 3px;
   font-size: 10px;
   border-radius: 5px;
+  width: 30px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .error {

@@ -1,23 +1,22 @@
 <template>
-  <div
-      class="sidebar"
-      :data="backgroundColor">
+  <div class="sidebar" :data="backgroundColor">
     <div class="sidebar-wrapper text-left">
-      <div class="logo">
-        <!--          <a href="javascript:void(0)" class="simple-text logo-mini">-->
-        <!--            {{ abv }}-->
-        <!--          </a>-->
+      <!-- <div class="logo">
+        <a href="javascript:void(0)" class="simple-text logo-mini">
+          {{ abv }}
+        </a>
 
-        <a href="javascript:void(0)"
-           class="simple-text logo-normal"
-           style="text-align: center">
+        <a
+          href="javascript:void(0)"
+          class="simple-text logo-normal"
+          style="text-align: center"
+        >
           {{ title }}
         </a>
-      </div>
+      </div> -->
       <ul class="nav">
         <slot>
-          <sidebar-link>
-          </sidebar-link>
+          <sidebar-link> </sidebar-link>
         </slot>
       </ul>
     </div>
@@ -29,35 +28,35 @@ import SidebarLink from "./SidebarLink.vue";
 export default {
   name: "side-bar",
   components: {
-    SidebarLink
+    SidebarLink,
   },
   props: {
     abv: {
       type: String,
-      default: "CT"
+      default: "CT",
     },
     title: {
       type: String,
-      default: "攻击威胁智能监测与预警系统"
+      default: "攻击威胁智能监测与预警系统",
     },
     backgroundColor: {
       type: String,
-      default: "green"
+      default: "green",
     },
     sidebarLinks: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   data() {
     return {
-      activeLinkIndex: 0
-    }
+      activeLinkIndex: 0,
+    };
   },
   computed: {
     isRTL() {
       return this.$rtl.isRTL;
-    }
+    },
   },
   methods: {
     findActiveLink() {
@@ -66,9 +65,9 @@ export default {
           this.activeLinkIndex = index;
         }
       });
-    }
-  }
-}
+    },
+  },
+};
 </script>
 <style>
 </style>
