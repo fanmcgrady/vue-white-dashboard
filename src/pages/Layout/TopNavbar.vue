@@ -87,8 +87,7 @@ import {
   export default{
     components:{
       DropDown,
-      Modal,
-      SidebarPlugin
+      Modal    
     },
     data() {
       return {

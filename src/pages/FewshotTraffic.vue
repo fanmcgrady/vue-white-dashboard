@@ -7,18 +7,22 @@
             <h5 class="card-category">稀疏异常行为检测</h5>
             <h3 class="card-title">稀疏异常行为检测</h3>
           </template>
-          <!-- <div class="typography-line text-left">
+          <div
+            class="typography-line text-left"
+            id="upload_file_box"
+            :style="{ display: uploadDisplay }"
+          >
             <span>上传文件</span>
             <input type="file" ref="file" @change="upload" />
-          </div> -->
-          <!-- <div class="typography-line text-left" style="margin-top: 20px">
+          </div>
+          <div class="typography-line text-left" style="margin-top: 20px">
             <span>Result</span>
             <blockquote>
               <p class="blockquote blockquote-primary">
                 {{ resultInfo }}
               </p>
             </blockquote>
-          </div> -->
+          </div>
           <div style="margin: 20px 40px">
             <!-- <div style="text-align: left; margin-bottom: 10px">
               <i
@@ -36,106 +40,110 @@
                 检测结果分析
               </span>
             </div> -->
-
-            <div class="engines">
-              <div class="circle">
-                <div class="positives" clean="">0</div>
-                <div class="total">/ 56</div>
+            <div id="analysis_board" :style="{ display: analysisDisplay }">
+              <div style="display:block">
+                <div style="float:left;padding-top:100px">
+                  <div class="engines">
+                    <div class="circle">
+                      <div class="positives" clean="">0</div>
+                      <div class="total">/ 56</div>
+                    </div>
+                    <svg
+                      id="circularProgressbar"
+                      class="circle-progressbar"
+                      height="300"
+                      width="300"
+                      style="stroke-dashoffset: 0; stroke-dasharray: 1000"
+                    >
+                      <circle
+                        cx="200"
+                        cy="200"
+                        r="90"
+                        stroke-width="10"
+                        fill="transparent"
+                        stroke="var(--vt-green-500)"
+                      ></circle>
+                    </svg>
+                  </div>
+                  <div class="alert">
+                    <i class="tim-icons icon-bell-55"></i>
+                    <span> "系统安全，未检测到异常流量" </span>
+                  </div>
+                </div>
+                <div style="float:right;margin-right:100px">
+                  <div style="text-align: left; margin-bottom: 10px">
+                    <i
+                      style="font-size: 1.73em"
+                      class="tim-icons icon-chart-bar-32 big"
+                    ></i>
+                    <span
+                      style="
+                        font-size: 24px;
+                        font-weight: bold;
+                        text-align: left;
+                        margin-bottom: 10px;
+                      "
+                    >
+                      基本画像
+                    </span>
+                  </div>
+                  <template style="width:500px">
+                    <base-table :data="tableData2">
+                      <template slot-scope="{ row }">
+                        <td>{{ row.key }}</td>
+                        <td>{{ row.value }}</td>
+                      </template>
+                    </base-table>
+                  </template>
+                </div>
               </div>
-              <svg
-                id="circularProgressbar"
-                class="circle-progressbar"
-                height="100"
-                width="100"
-                style="stroke-dashoffset: 0; stroke-dasharray: 282.743"
-              >
-                <circle
-                  cx="200"
-                  cy="200"
-                  r="45"
-                  stroke-width="10"
-                  fill="transparent"
-                  stroke="var(--vt-green-500)"
-                ></circle>
-              </svg>
+              <br><br><br>
+              <div style="text-align: left; margin-bottom: 10px;margin-top:500px">
+                <i
+                  style="font-size: 1.73em"
+                  class="tim-icons icon-chart-bar-32 big"
+                ></i>
+                <span
+                  style="
+                    font-size: 24px;
+                    font-weight: bold;
+                    text-align: left;
+                    margin-bottom: 10px;
+                  "
+                >
+                  检测结果
+                </span>
+              </div>
+              <template>
+                <base-table :data="tableData" :columns="columns">
+                  <template slot="columns">
+                    <th class="text-center">源IP</th>
+                    <th>目的IP</th>
+                    <th>源端口</th>
+                    <th>目标端口</th>
+                    <th>传输层协议</th>
+                    <th>评级</th>
+                    <th>威胁类型</th>
+                  </template>
+                  <template slot-scope="{ row }">
+                    <td>{{ row.SrcPacketIP }}</td>
+                    <td>{{ row.DstPacketIP }}</td>
+                    <td>{{ row.SrcPacketPort }}</td>
+                    <td>{{ row.DstPacketPort }}</td>
+                    <td>{{ row.Protocol }}</td>
+                    <td>
+                      <template v-if="row.Classfication == 'Normal'">
+                        <div class="label">正常</div>
+                      </template>
+                      <template v-else>
+                        <div class="label error">异常</div>
+                      </template>
+                    </td>
+                    <td>{{ row.DetailLabel }}</td>
+                  </template>
+                </base-table>
+              </template>
             </div>
-
-            <div class="alert">
-              <i class="tim-icons icon-bell-55"></i>
-              <span> "系统安全，未检测到异常流量" </span>
-            </div>
-
-            <div style="text-align: left; margin-bottom: 10px">
-              <i
-                style="font-size: 1.73em"
-                class="tim-icons icon-chart-bar-32 big"
-              ></i>
-              <span
-                style="
-                  font-size: 24px;
-                  font-weight: bold;
-                  text-align: left;
-                  margin-bottom: 10px;
-                "
-              >
-                基本画像
-              </span>
-            </div>
-            <template>
-              <base-table :data="tableData2">
-                <template slot-scope="{ row }">
-                  <td>{{ row.key }}</td>
-                  <td>{{ row.value }}</td>
-                </template>
-              </base-table>
-            </template>
-
-            <div style="text-align: left; margin-bottom: 10px">
-              <i
-                style="font-size: 1.73em"
-                class="tim-icons icon-chart-bar-32 big"
-              ></i>
-              <span
-                style="
-                  font-size: 24px;
-                  font-weight: bold;
-                  text-align: left;
-                  margin-bottom: 10px;
-                "
-              >
-                检测结果
-              </span>
-            </div>
-
-            <template>
-              <base-table :data="tableData" :columns="columns">
-                <template slot="columns">
-                  <th class="text-center">源IP</th>
-                  <th>目的IP</th>
-                  <th>源端口</th>
-                  <th>目标端口</th>
-                  <th>传输层协议</th>
-                  <th>评级</th>
-                  <th>威胁类型</th>
-                </template>
-                <template slot-scope="{ row }">
-                  <td>{{ row.SrcPacketIP }}</td>
-                  <td>{{ row.DstPacketIP }}</td>
-                  <td>{{ row.SrcPacketPort }}</td>
-                  <td>{{ row.DstPacketPort }}</td>
-                  <td>{{ row.Protocol }}</td>
-                  <td>
-                    <template v-if="row.Classfication == 'Normal'">
-                      <div class="label">正常</div>
-                    </template>
-                    <template v-else>
-                      <div class="label error">异常</div>
-                    </template>
-                  </td>
-                  <td>{{ row.DetailLabel }}</td>
-                </template>
-              </base-table>
-            </template>
           </div>
         </card>
       </div>
@@ -156,6 +164,8 @@ export default {
   mounted() {},
   data() {
     return {
+      uploadDisplay: "none",
+      analysisDisplay: "block",
       resultInfo: "待上传文件（检测结果共返回5种网络流量类型）",
       columns: [
         "SrcPacketIP",
@@ -232,11 +242,11 @@ export default {
           key: "检测文件SHA-1",
           value: "0abfd5abe1936f9f7555d849dcbad5e07242e08c",
         },
-        {
-          key: "检测文件SHA-256",
-          value:
-            "865e994201266b48ef0750c945c6ea471f80d15d04759bd8b8f71562de0221ef",
-        },
+        // {
+        //   key: "检测文件SHA-256",
+        //   value:
+        //     "865e994201266b48ef0750c945c6ea471f80d15d04759bd8b8f71562de0221ef",
+        // },
         { key: "", value: "" },
         { key: "检测流数量", value: "900" },
         { key: "检测流平均包数量", value: "12" },
@@ -251,6 +261,8 @@ export default {
   },
   methods: {
     upload() {
+      this.uploadDisplay = "block";
+      this.analysisDisplay = "none";
       let formData = new FormData();
       formData.append("file", this.$refs.file.files[0]);
       axios
@@ -276,9 +288,9 @@ export default {
 }
 .engines {
   border-radius: 50%;
-  background-color: rgb(230, 230, 230);
-  width: 100px;
-  height: 100px;
+  // background-color: rgb(230, 230, 230);
+  width: 200px;
+  height: 200px;
   padding: 10px;
   box-sizing: border-box;
   margin: 0px auto 20px;
@@ -288,8 +300,8 @@ export default {
   box-shadow: rgb(102, 102, 102) 0px 5px 20px 0px;
   background-color: white;
   border-radius: 50%;
-  height: 100%;
-  width: 100%;
+  height: 200px;
+  width: 200px;
   text-align: center;
   color: var(--vt-grey-500);
   padding-top: 15px;
@@ -301,8 +313,8 @@ export default {
 .engines .circle-progressbar {
   transform: rotate(-90deg);
   position: relative;
-  top: -90px;
-  left: -10px;
+  top: -250px;
+  left: -50px;
   stroke-linecap: round;
   transition: all 0.5s ease-in-out 0s;
 }
@@ -313,16 +325,22 @@ export default {
 }
 
 .engines .circle .positives {
-  font-size: 35px;
+  font-size: 55px;
+  padding-top:50px;
   line-height: 35px;
   transition: color 0.2s ease 0s;
 }
 
+.total{
+  padding-top:10px;
+  font-size: 20px
+}
+
 circle {
-  cx: 50;
-  cy: 50;
-  r: 45;
-  stroke-width: 10;
+  cx: 150;
+  cy: 150;
+  r: 90;
+  stroke-width: 50;
   fill: transparent;
   stroke: rgb(34, 181, 115);
   // stroke: rgb(221, 37, 37);
@@ -330,7 +348,7 @@ circle {
 
 .alert {
   text-align: center;
-  margin: 30px 0;
+  margin: 40px 50px;
   font-weight: bold;
   background-color: rgba(212, 212, 212, 0.562);
   padding: 20px 30px;
@@ -348,4 +366,6 @@ circle {
 .error {
   background: rgb(221, 37, 37);
 }
+
+
 </style>
