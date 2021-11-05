@@ -15,7 +15,7 @@
       <hr align="center" width="180" color="white" SIZE="0.5" />
 
       <div style="padding: 0 25px">
-        <p style="font-size: 24px">异常通信检测</p>
+        <p style="font-size: 24px">XXXXXX</p>
       </div>
       <sidebar-link style="padding: 0 20px" to="/fewshottraffic">
         <i class="tim-icons icon-zoom-split"></i>
@@ -32,7 +32,7 @@
       <hr align="center" width="180" color="white" SIZE="0.5" />
 
       <div style="padding: 0 20px">
-        <p style="font-size: 24px">隐蔽威胁识别</p>
+        <p style="font-size: 24px">XXXXXX</p>
       </div>
 
       <sidebar-link style="padding: 0 20px" to="/covertchannel">
